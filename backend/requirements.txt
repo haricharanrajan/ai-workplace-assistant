@@ -32,6 +32,7 @@ openai==2.24.0
 passlib==1.7.4
 proto-plus==1.27.1
 protobuf==5.29.6
+psycopg2-binary==2.9.9
 pyasn1==0.6.2
 pyasn1_modules==0.4.2
 pycparser==3.0
