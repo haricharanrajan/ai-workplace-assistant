@@ -15,8 +15,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "http://localhost:5173",
-        # add your deployed frontend URL later, e.g.
-        # "https://ai-workplace-assistant-frontend.onrender.com"
+	"https://ai-workplace-assistant-frontend.onrender.com",
     ],
     allow_credentials=True,
     allow_methods=["*"],
