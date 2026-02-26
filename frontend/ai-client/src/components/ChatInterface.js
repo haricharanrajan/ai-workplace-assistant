@@ -45,18 +45,10 @@ export default function ChatInterface() {
     try {
       const res = await askQuestion(trimmed);
       const answer = res.answer || "(No answer returned)";
-      const context = Array.isArray(res.context_used) ? res.context_used : [];
-
-      const contextText =
-        context.length > 0
-          ? `\n\n---\nContext used:\n${context
-              .map((c, i) => `${i + 1}. ${c}`)
-              .join("\n")}`
-          : "";
 
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: answer + contextText },
+        { role: "assistant", content: answer },
       ]);
     } catch (e) {
       setMessages((prev) => [
