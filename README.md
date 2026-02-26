@@ -65,7 +65,40 @@ View AI-generated answers
 
 View previous chat history
 
-Registration is handled via backend API (Swagger) for security and administrative control.
+
+📝 User Registration
+
+User registration is supported via backend API:
+
+POST /auth/register
+
+For this project, registration is performed through Swagger UI instead of the frontend to:
+
+Prevent unauthorized admin creation
+
+Simulate real enterprise user provisioning
+
+Maintain system security
+
+Demo user creation
+
+Open Swagger → /auth/register
+
+Admin example:
+
+{
+  "username": "admin1",
+  "password": "Admin@123",
+  "role": "admin"
+}
+
+Employee example:
+
+{
+  "username": "emp1",
+  "password": "Emp@123",
+  "role": "employee"
+}
 
 
 🧠 AI Implementation (RAG Pipeline)
@@ -115,33 +148,43 @@ ai-workplace-assistant/
 
 
 ⚙️ Backend Setup (Local)
+
 1️⃣ Create virtual environment
+cd backend
 python -m venv venv
 venv\Scripts\activate
 2️⃣ Install dependencies
 pip install -r requirements.txt
-3️⃣ Create .env
+3️⃣ Configure environment variables
+
+Create .env:
+
 OPENAI_API_KEY=your_openai_key
 SECRET_KEY=your_secret_key
 ALGORITHM=HS256
 DATABASE_URL=sqlite:///./app.db
-4️⃣ Run server
+CHAT_MODEL=gpt-4o-mini
+4️⃣ Run backend
 uvicorn app.main:app --reload
 
-Backend runs at:
-http://localhost:8000
+Open:
+http://127.0.0.1:8000/docs
 
 
 💻 Frontend Setup (Local)
+
 1️⃣ Install dependencies
 cd frontend/ai-client
 npm install
-2️⃣ Create .env
-REACT_APP_API_BASE_URL=http://localhost:8000
-3️⃣ Run
+2️⃣ Configure environment
+
+Create .env:
+
+REACT_APP_API_BASE_URL=http://127.0.0.1:8000
+3️⃣ Run frontend
 npm start
 
-Frontend runs at:
+Open:
 http://localhost:3000
 
 
@@ -169,7 +212,6 @@ npm install && npm run build
 Publish Directory:
 
 build
-
 
 Environment Variable:
 
@@ -242,11 +284,7 @@ Add document listing & deletion UI
 
 Add streaming LLM responses
 
-Add chunk-level metadata tracking
-
 Implement admin-only user creation
-
-Add rate limiting & logging
 
 Add vector database (e.g., Pinecone, Weaviate)
 
